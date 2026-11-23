@@ -70,11 +70,11 @@ Customers: `C-100` Maya Patel (maya.patel@example.com, phone ending 4421), `C-10
 Orders:
 - `HE-5001` is out for delivery and nearby.
 - `HE-5002` is preparing, so its address can still change.
-- `HE-5003` was delivered 3 days ago for $78, so a full refund needs the manager.
-- `HE-5004` was delivered 45 days ago, outside the refund window.
+- `HE-5003` was delivered on 2026-11-20 for $78, so a full refund needs the manager.
+- `HE-5004` was delivered on 2026-10-05, outside the 30-day refund window.
 - `HE-5005` was just placed.
 
-The lobster roll (`M-3`) is out of stock. Data lives in Postgres (`agent/schema.sql`). The agent creates the tables
+Seeded timestamps are fixed ISO values, so the world can be rebuilt as data. The lobster roll (`M-3`) is out of stock. Data lives in Postgres (`agent/schema.sql`). The agent creates the tables
 and seeds them on startup when they are missing.
 
 ## Configuration

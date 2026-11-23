@@ -77,11 +77,11 @@ INSERT INTO menu_items (item_id, name, category, price_cents, in_stock) VALUES
 ON CONFLICT (item_id) DO NOTHING;
 
 INSERT INTO orders (order_id, customer_id, status, total_cents, delivery_address, placed_at) VALUES
-    ('HE-5001', 'C-100', 'out_for_delivery', 4250, '12 Harbor Way, Apt 3', now() - interval '35 minutes'),
-    ('HE-5002', 'C-101', 'preparing', 1950, '88 Pier Road', now() - interval '10 minutes'),
-    ('HE-5003', 'C-100', 'delivered', 7800, '12 Harbor Way, Apt 3', now() - interval '3 days'),
-    ('HE-5004', 'C-102', 'delivered', 2600, '5 Lighthouse Lane', now() - interval '45 days'),
-    ('HE-5005', 'C-102', 'placed', 1400, '5 Lighthouse Lane', now() - interval '2 minutes')
+    ('HE-5001', 'C-100', 'out_for_delivery', 4250, '12 Harbor Way, Apt 3', '2026-11-23T12:00:00Z'),
+    ('HE-5002', 'C-101', 'preparing', 1950, '88 Pier Road', '2026-11-23T12:25:00Z'),
+    ('HE-5003', 'C-100', 'delivered', 7800, '12 Harbor Way, Apt 3', '2026-11-20T18:30:00Z'),
+    ('HE-5004', 'C-102', 'delivered', 2600, '5 Lighthouse Lane', '2026-10-05T19:00:00Z'),
+    ('HE-5005', 'C-102', 'placed', 1400, '5 Lighthouse Lane', '2026-11-23T12:33:00Z')
 ON CONFLICT (order_id) DO NOTHING;
 
 INSERT INTO order_items (order_id, item_id, size, quantity) VALUES
@@ -94,10 +94,10 @@ INSERT INTO order_items (order_id, item_id, size, quantity) VALUES
     ('HE-5005', 'M-2', 's', 1)
 ON CONFLICT (order_id, item_id, size) DO NOTHING;
 
-INSERT INTO deliveries (order_id, courier_name, status, eta_minutes) VALUES
-    ('HE-5001', 'Sam Okafor', 'nearby', 6),
-    ('HE-5002', NULL, 'waiting', 30),
-    ('HE-5003', 'Rita Moreno', 'delivered', 0),
-    ('HE-5004', 'Sam Okafor', 'delivered', 0),
-    ('HE-5005', NULL, 'waiting', 40)
+INSERT INTO deliveries (order_id, courier_name, status, eta_minutes, updated_at) VALUES
+    ('HE-5001', 'Sam Okafor', 'nearby', 6, '2026-11-23T12:29:00Z'),
+    ('HE-5002', NULL, 'waiting', 30, '2026-11-23T12:25:00Z'),
+    ('HE-5003', 'Rita Moreno', 'delivered', 0, '2026-11-20T19:05:00Z'),
+    ('HE-5004', 'Sam Okafor', 'delivered', 0, '2026-10-05T19:40:00Z'),
+    ('HE-5005', NULL, 'waiting', 40, '2026-11-23T12:33:00Z')
 ON CONFLICT (order_id) DO NOTHING;
